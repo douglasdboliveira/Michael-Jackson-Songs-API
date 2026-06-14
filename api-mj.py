@@ -93,9 +93,6 @@ def fetch_songs():
     theme = request.args.get("theme")
     impact = request.args.get("impact")
 
-    # if not album and not era and not genre and not theme and not impact:
-    #     return jsonify(songs)
-
     new_list = songs
     
     if album:
