@@ -93,28 +93,27 @@ def fetch_songs():
     theme = request.args.get("theme")
     impact = request.args.get("impact")
 
-    if not album and not era and not genre and not theme and not impact:
-        return jsonify(songs)
+    # if not album and not era and not genre and not theme and not impact:
+    #     return jsonify(songs)
+
+    new_list = songs
     
     if album:
-        new_list = [song for song in songs if album.lower() in song["album"].lower()]
-        return jsonify(new_list)
+        new_list = [song for song in new_list if album.lower() in song["album"].lower()]
 
     if era:
-        new_list = [song for song in songs if era.lower() in song["era"].lower()]
-        return jsonify(new_list)
+        new_list = [song for song in new_list if era.lower() in song["era"].lower()]
 
     if genre:
-        new_list = [song for song in songs if genre.lower() in song["genre"].lower()]
-        return jsonify(new_list)
+        new_list = [song for song in new_list if genre.lower() in song["genre"].lower()]
 
     if theme:
-        new_list = [song for song in songs if theme.lower() in song["theme"].lower()]
-        return jsonify(new_list)
+        new_list = [song for song in new_list if theme.lower() in song["theme"].lower()]
 
     if impact:
-        new_list = [song for song in songs if impact.lower() in song["impact"].lower()]
-        return jsonify(new_list)
+        new_list = [song for song in new_list if impact.lower() in song["impact"].lower()]
+        
+    return jsonify(new_list)
 
 if __name__ == "__main__":
     app.run(debug=True)
